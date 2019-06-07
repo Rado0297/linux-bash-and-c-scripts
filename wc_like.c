@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-int main()
+int main(int argc, char* argv[])
 {
   typedef unsigned long count_t;
 
@@ -14,13 +14,13 @@ int main()
 
   char filename[100], c;
 
-  printf("Enter file:\n");
-  scanf("%s", filename);
+  //printf("Enter file:\n");
+  //scanf("%s", filename);
 
-  fptr = fopen(filename, "r");
+  fptr = fopen(argv[1], "r");
   if (fptr == NULL)
   {
-    printf("Cannot open %s file.", filename);
+    printf("Cannot open %s file.", argv[1]);
     exit(0);
   }
 
@@ -42,7 +42,7 @@ int main()
     c = fgetc(fptr);
   }
 
-  printf("%ld %ld %ld %s \n", lcount, wcount, ccount, filename);
+  printf("%ld %ld %ld %s \n", lcount, wcount, ccount, argv[1]);
 
   fclose(fptr);
 
